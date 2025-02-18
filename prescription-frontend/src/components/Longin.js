@@ -8,6 +8,7 @@ function Longin() {
             name:"",
             password:""
         });
+    const [error, setError] = useState("");
 
     const handleChange = (e) =>{
         const value = e.target.value;
@@ -38,6 +39,7 @@ function Longin() {
         })
         .catch((error)=>{
             console.log(error);
+            setError("Invalid username or password"); 
         })
     }
     const navigate = useNavigate();
@@ -47,9 +49,10 @@ function Longin() {
       <div className="text-3xl font-bold text-blue-600 mb-8">
         Login Page
       </div>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md space-y-4">
-        <input onChange={(e)=>handleChange(e)} value={user.name} type="text" name='name' placeholder='Enter your name...' className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></input>
-        <input onChange={(e)=>handleChange(e)} value={user.password} type='password' name='password' placeholder='Enter your password...' className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></input>
+        <input onChange={(e)=>handleChange(e)} value={user.name} type="text" name='name' placeholder='Enter your name...' required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></input>
+        <input onChange={(e)=>handleChange(e)} value={user.password} type='password' name='password' placeholder='Enter your password...' required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></input>
       </div>
       <div className="mt-8 space-x-4">
         <button onClick={lognUser} className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Submit</button>      

@@ -39,7 +39,8 @@ const AddPrescription = () => {
             navigate("/prescriptionList");
         })
         .catch((error)=>{
-            console.log(error);
+            navigate("/");
+            console.log(error + " I am from AddPrescription.");
         })
     }
     const navigate = useNavigate();

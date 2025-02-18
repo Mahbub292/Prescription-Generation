@@ -15,6 +15,7 @@ const PrescriptionList = () => {
                     const response = await PrescriptionService.getPrescription();
                     setPrescriptions(response.data);
                 }catch(error){
+                    navigate("/");
                     console.log(error);
                 }
                 setLoding(false)
@@ -23,14 +24,18 @@ const PrescriptionList = () => {
         },[]);
         const deletePrescription = (e, id) =>{
                 e.preventDefault();
-                PrescriptionService.deletePrescription(id)
-                .then(() =>{
-                  if(prescriptions){
-                    setPrescriptions((prevElement)=>{
-                      return prevElement.filter((prescription)=>prescription.id !== id);
+                const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+                if(confirmDelete){
+                    PrescriptionService.deletePrescription(id)
+                    .then(() =>{
+                    if(prescriptions){
+                        setPrescriptions((prevElement)=>{
+                        return prevElement.filter((prescription)=>prescription.id !== id);
+                        })
+                    }
                     })
-                  }
-                })
+                }
+                
             }
 
     const editPrescription = (e, id)=> {

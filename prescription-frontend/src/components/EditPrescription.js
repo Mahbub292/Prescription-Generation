@@ -28,6 +28,7 @@ const EditPrescription = () => {
                     const response = await PrescriptionService.getUserById(prescription.id);
                     setPrescription(response.data);
                 }catch(error){
+                    navigate("/");
                     console.log(error);
                 }
                 
@@ -43,6 +44,7 @@ const EditPrescription = () => {
             navigate("/prescriptionList");
         })
         .catch((error)=>{
+            navigate("/");
             console.log(error);
         })
     }
