@@ -24,7 +24,7 @@ const PrescriptionList = () => {
         },[]);
         const deletePrescription = (e, id) =>{
                 e.preventDefault();
-                const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+                const confirmDelete = window.confirm("⚠️ Are you sure you want to delete this item?");
                 if(confirmDelete){
                     PrescriptionService.deletePrescription(id)
                     .then(() =>{
