@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import UserService from '../service/UserService'
-import axios from "axios";
 
 function Longin() {
     const [user, setUser] = useState({
@@ -23,19 +22,6 @@ function Longin() {
 
             console.log(localStorage.getItem('jwtToken'));
             navigate("/prescriptionList");
-          //   const fetchData = async () => {
-          //     try {
-          //         const response = await axios.get('http://localhost:8080/prescription', {
-          //             headers: { Authorization: `Bearer ${localStorage.getItem('jwtToken')}` }
-          //         });
-          //         console.log(response.data);
-          //     } catch (error) {
-          //         alert('Unauthorized');
-          //     }
-          // };
-          // fetchData();
-
-            //navigate("/back-test");
         })
         .catch((error)=>{
             console.log(error);

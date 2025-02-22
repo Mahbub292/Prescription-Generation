@@ -26,9 +26,13 @@ const EditPrescription = () => {
                 
                 try{
                     const response = await PrescriptionService.getUserById(prescription.id);
-                    setPrescription(response.data);
+                    if(response.status === 200){
+                      setPrescription(response.data);
+                    }else{
+                      navigate("/");
+                      alert("❌ Some issue occurred here. Maybe you have to log in again.");
+                    }
                 }catch(error){
-                    navigate("/");
                     console.log(error);
                 }
                 
@@ -40,12 +44,15 @@ const EditPrescription = () => {
         e.preventDefault();
         PrescriptionService.editPrescription(prescription, id)
         .then((response) =>{
-            console.log(response);
+          if(response && response.ok){
             navigate("/prescriptionList");
+          }else{
+            navigate("/");
+            alert("❌ Some issue occurred here. Maybe you have to log in again.");
+          }
         })
         .catch((error)=>{
-            navigate("/");
-            console.log(error);
+          console.log(error);
         })
     }
   return (

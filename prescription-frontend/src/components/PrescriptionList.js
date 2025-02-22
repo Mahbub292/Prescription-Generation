@@ -13,9 +13,13 @@ const PrescriptionList = () => {
                 setLoding(true)
                 try{
                     const response = await PrescriptionService.getPrescription();
-                    setPrescriptions(response.data);
+                    if(response.status === 200){
+                        setPrescriptions(response.data);
+                    }else{
+                        navigate("/");
+                        alert("❌ Some issue occurred here. Maybe you have to log in again.");
+                    }
                 }catch(error){
-                    navigate("/");
                     console.log(error);
                 }
                 setLoding(false)
@@ -33,6 +37,11 @@ const PrescriptionList = () => {
                         return prevElement.filter((prescription)=>prescription.id !== id);
                         })
                     }
+                    })
+                    .catch((error)=>{
+                        navigate("/")
+                        alert("❌ Failed to delete item. Maybe you have to log in again.");
+                        console.log(error);
                     })
                 }
                 

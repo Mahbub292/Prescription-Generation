@@ -14,7 +14,8 @@ class PrescriptionService{
     console.log(error);
   });
 
-}  
+}
+
 getUserById(id){
   return axios.get(BASE_URL + "/" + id, {
     headers: {
@@ -59,25 +60,5 @@ getUserById(id){
     console.log(error);
   });
   }
-    
-    // getUser(){
-    //     const token = localStorage.getItem('jwtToken');
-    //     console.log("getUser()", token);
-        
-    //     return axios.get('http://localhost:8080/prescription', {
-    //       headers: {
-    //           'Authorization': 'Bearer ' + localStorage.getItem('token') // Example
-    //       },
-    //       withCredentials: true // Important!
-    //   })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    
-        
-    // }
 }
 export default new PrescriptionService();

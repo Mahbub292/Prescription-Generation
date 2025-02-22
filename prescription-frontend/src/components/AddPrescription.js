@@ -35,13 +35,19 @@ const AddPrescription = () => {
         e.preventDefault();
         PrescriptionService.savePrescription(prescription)
         .then((response) =>{
+          if(response && response.ok){
             console.log(response);
             navigate("/prescriptionList");
             alert("✅ Item add successfully!");
+          }
+          else {
+            navigate("/")
+            alert("❌ Some issue occurred here. Maybe you have to log in again.");
+          }
+            
         })
-        .catch((error)=>{
-            navigate("/");
-            console.log(error + " I am from AddPrescription.");
+        .catch((error)=>{ 
+          console.log(error + " I am from AddPrescription.");
         })
     }
     const navigate = useNavigate();

@@ -4,7 +4,5 @@ class UserService{
     lognUser(user){
         return axios.post(BASE_URL, user);
     }
-    
-
 }
 export default new UserService();
