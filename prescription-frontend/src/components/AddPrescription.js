@@ -35,7 +35,7 @@ const AddPrescription = () => {
         e.preventDefault();
         PrescriptionService.savePrescription(prescription)
         .then((response) =>{
-          if(response && response.ok){
+          if(response && response.status === 200){
             console.log(response);
             navigate("/prescriptionList");
             alert("✅ Item add successfully!");
@@ -57,7 +57,7 @@ const AddPrescription = () => {
         <h1 className="text-3xl font-bold text-gray-800">Add Prescription</h1>
       </div>
       <div className="w-full max-w-2xl bg-white shadow-md rounded-2xl p-6 mt-6 space-y-4">
-        <input onChange={(e)=>handleChange(e)} value={prescription.prescriptionDate} type="text" name='prescriptionDate' placeholder='Prescription Date'
+        <input onChange={(e)=>handleChange(e)} value={prescription.prescriptionDate} type="date" name='prescriptionDate' placeholder='Prescription Date'
          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" ></input>
 
         <input onChange={(e)=>handleChange(e)} value={prescription.patientName} type='text' name='patientName' placeholder='Patient Name' 
@@ -84,7 +84,7 @@ const AddPrescription = () => {
         <input onChange={(e)=>handleChange(e)} value={prescription.medicines} type='text' name='medicines' placeholder='Medicines'
          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" ></input>
 
-        <input onChange={(e)=>handleChange(e)} value={prescription.nextVisitDate} type='text' name='nextVisitDate' placeholder='Next Visit Date'
+        <input onChange={(e)=>handleChange(e)} value={prescription.nextVisitDate} type='date' name='nextVisitDate' placeholder='Next Visit Date'
          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" ></input>
       </div>
       <div className="w-full max-w-2xl bg-white shadow-md rounded-2xl p-6 mt-6 flex justify-between">

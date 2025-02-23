@@ -1,8 +1,7 @@
 package com.example.prescription_backend.model;
 
+import java.time.LocalDate;
 
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +17,7 @@ public class Prescription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
  
-    private String prescriptionDate;
+    private LocalDate prescriptionDate;
     
     private String patientName;
     
@@ -30,6 +29,6 @@ public class Prescription {
 
     private String medicines;
 
-    private String nextVisitDate;
+    private LocalDate nextVisitDate;
 
 }

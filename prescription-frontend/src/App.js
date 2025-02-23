@@ -17,8 +17,6 @@ function App() {
       <Route path='/back-test' element={<BackendTest/>}></Route>
       <Route path='/edit-prescription/:id' element={<EditPrescription/>}></Route>
       <Route path='/add-prescription' element ={<AddPrescription/>}></Route>
-      {/* <Route path="/addUser" element={<AddUser/>}></Route>
-      <Route path="/editUser/:id" element={<UpdateUser/>}></Route>  */}
     </Routes>
     </BrowserRouter>
     
